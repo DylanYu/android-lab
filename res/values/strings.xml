@@ -9,5 +9,7 @@
     <string name="service_stopped">Service stopped!</string>
     <string name="service_connected">Service connected!</string>
     <string name="service_disconnected">Service disconnected!</string>
+    <string name="broadcast_activity">This is Broadcast Activity</string>
+    <string name="broadcast_notification">Broadcast Notification</string>
 
 </resources>
