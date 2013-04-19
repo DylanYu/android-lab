@@ -25,6 +25,15 @@
         <activity
             android:name="lab.broadcast.BroadcastReceiverActivity"
             android:label="@string/app_name" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>  -->
+        </activity>
+        <activity
+            android:name="lab.lang.LangActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +42,7 @@
         </activity>
         
         <service android:name="lab.service.LocalService"/>
+        <service android:name="lab.lang.CalculationService"/>
     </application>
 
 </manifest>
