@@ -7,10 +7,16 @@ Here are some wisdom words from [Google's documentation](http://developer.androi
 
 	There are two basic rules for writing efficient code:
 
-	*	Don't do work that you don't need to do.
-	*	Don't allocate memory if you can avoid it.
+	1.	Don't do work that you don't need to do.
+	2.	Don't allocate memory if you can avoid it.
 
-	One of the trickiest problems you'll face when micro-optimizing an Android app is that your app is certain to be running on multiple types of hardware. Different versions of the VM running on different processors running at different speeds. It's not even generally the case that you can simply say "device X is a factor F faster/slower than device Y", and scale your results from one device to others. In particular, measurement on the emulator tells you very little about performance on any device. There are also huge differences between devices with and without a JIT: the best code for a device with a JIT is not always the best code for a device without.
+	One of the trickiest problems you'll face when micro-optimizing an Android app is that your app 
+	is certain to be running on multiple types of hardware. Different versions of the VM running on 
+	different processors running at different speeds. It's not even generally the case that you can 
+	simply say "device X is a factor F faster/slower than device Y", and scale your results from one 
+	device to others. In particular, measurement on the emulator tells you very little about 
+	performance on any device. There are also huge differences between devices with and without a 
+	JIT: the best code for a device with a JIT is not always the best code for a device without.
 
 We made following conclusions after a series of experiments:
 
