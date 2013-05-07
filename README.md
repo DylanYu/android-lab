@@ -1,7 +1,7 @@
 #Android Platform Experiments
 ##Experiments to show the impact on inappropriate background services
 
-We make following conclusions after series of experiments:
+We made following conclusions after series of experiments:
 
 1.  Under concurrent environment, default service consumes more power than intent service.
 2.  Under concurrent environment, when dealing with a small amount of workload, default service requires less time to accomplish its job.
