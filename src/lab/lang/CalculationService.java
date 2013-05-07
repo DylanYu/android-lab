@@ -1,5 +1,6 @@
 package lab.lang;
 
+import util.Calculation;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -32,11 +33,7 @@ public class CalculationService extends Service {
 	
     @Override
     public void onDestroy() {
-        // Cancel the persistent notification.
-//        mNM.cancel(NOTIFICATION);
         Log.i("TAG", "onDestroy");
-        // Tell the user we stopped.
-//        Toast.makeText(this, R.string.service_stopped, Toast.LENGTH_SHORT).show();
     }
 
     @Override

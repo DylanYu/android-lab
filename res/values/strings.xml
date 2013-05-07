@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Lab</string>
+    <string name="app_name">AndroidLab</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="service_started">Service started!</string>
@@ -12,5 +12,7 @@
     <string name="broadcast_activity">This is Broadcast Activity</string>
     <string name="broadcast_notification">Broadcast Notification</string>
     <string name="jvm_activity">This is JVM Activity</string>
+    <string name="lab_for_lang">LAB_FOR_LANG</string>
+    <string name="lab_for_service">LAB_FOR_SERVICE</string>
 
 </resources>

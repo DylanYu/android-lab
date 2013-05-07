@@ -1,8 +1,6 @@
 package lab.service;
 
-import java.math.BigInteger;
 import java.util.Date;
-
 
 import lab.service.R;
 
@@ -19,8 +17,10 @@ import android.widget.Toast;
 
 public class ServiceActivity extends Activity {
 
-	private LocalService mBoundService;
+	private ANormalService mBoundService;
 	private boolean mIsBound;
+	private Date mStartTime;
+	private Date mEndTime;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +39,26 @@ public class ServiceActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
+		mStartTime = new Date();
+		Log.i("LocalService", "Services started at " + mStartTime.getTime());
 //		doBindService();
-		doStartService();
-//		new Thread(new Calculate(Integer.MAX_VALUE / 10000)).start();
+//		doStartNormalService();
+		doStartIntentService();
+	}
+	
+	@Override
+	public void onPause() {
+		mEndTime = new Date();
+		Log.i("LocalService", (mEndTime.getTime() - mStartTime.getTime()) + "");
+		super.onPause();
 	}
 	
 	@Override
 	public void onStop() {
 		super.onStop();
 //		doUnbindService();
-		doStopService();
+//		doStopNormailService();
+		doStopIntentService();
 	}
 
 
@@ -60,7 +70,7 @@ public class ServiceActivity extends Activity {
 	        // interact with the service.  Because we have bound to a explicit
 	        // service that we know is running in our own process, we can
 	        // cast its IBinder to a concrete class and directly access it.
-	        mBoundService = ((LocalService.LocalBinder)service).getService();
+	        mBoundService = ((ANormalService.LocalBinder)service).getService();
 
 	        // Tell the user about this for our demo.
 	        Toast.makeText(getApplication(), R.string.service_connected,
@@ -78,13 +88,41 @@ public class ServiceActivity extends Activity {
 	    }
 	};
 
-	void doStartService() {
-		Intent intent = new Intent(ServiceActivity.this, LocalService.class);
+	void doStartIntentService() {
+		Intent intent = new Intent(ServiceActivity.this, AIntentService.class);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
 		startService(intent);
 	}
 	
-	void doStopService() {
-		Intent intent = new Intent(ServiceActivity.this, LocalService.class);
+	void doStopIntentService() {
+		Intent intent = new Intent(ServiceActivity.this, AIntentService.class);
+		stopService(intent);
+	}
+	
+	void doStartNormalService() {
+		Intent intent = new Intent(ServiceActivity.this, ANormalService.class);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+		startService(intent);
+	}
+	
+	void doStopNormailService() {
+		Intent intent = new Intent(ServiceActivity.this, ANormalService.class);
 		stopService(intent);
 	}
 	
@@ -94,7 +132,7 @@ public class ServiceActivity extends Activity {
 	    // we know will be running in our own process (and thus won't be
 	    // supporting component replacement by other applications).
 	    bindService(new Intent(this, 
-	            LocalService.class), mConnection, Context.BIND_AUTO_CREATE);
+	            ANormalService.class), mConnection, Context.BIND_AUTO_CREATE);
 	    mIsBound = true;
 	}
 
@@ -111,28 +149,4 @@ public class ServiceActivity extends Activity {
 	    super.onDestroy();
 	    doUnbindService();
 	}
-	
-	class Calculate implements Runnable {
-    	private int n;
-    	Calculate(int n) {
-    		this.n = n;
-    	}
-    	private void calculate() {
-    		Date t0 = new Date();
-	    	BigInteger sum = new BigInteger("0");
-	    	for(int i = 0; i < n; i++) {
-	    		sum = sum.add(new BigInteger(String.valueOf(i)));
-	    		if(i % 100000 == 0)
-	    			Log.i("LocalService", (double)i / n + "");
-	    	}
-	    	Date t1 = new Date();
-	    	
-	    	Log.i("LocalService", sum.toString() + "");
-	    	Log.i("LocalService", (double)(t1.getTime() - t0.getTime()) / 1000 + "");
-	    }
-    	
-    	public void run() {
-    		calculate();
-    	}
-    }
 }
