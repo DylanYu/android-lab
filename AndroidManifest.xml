@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lab.service"
+    package="yu.lab"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="lab.service.ServiceActivity"
+            android:name=".ServiceActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="lab.broadcast.BroadcastReceiverActivity"
+            android:name=".BroadcastReceiverActivity"
             android:label="@string/app_name" >
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>  -->
+            </intent-filter>-->
         </activity>
         <activity
-            android:name="lab.lang.LangActivity"
+            android:name="yu.lab.LangActivity"
             android:label="@string/app_name" >
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,9 +41,19 @@
             </intent-filter>  -->
         </activity>
         
-        <service android:name="lab.service.ANormalService"/>
-        <service android:name="lab.service.AIntentService"/>
-        <service android:name="lab.lang.CalculationService"/>
+        <service android:name=".ANormalService"/>
+        <service android:name=".AIntentService"/>
+        <service android:name=".CalculationService"/>
+        <service android:name="yu.lab.Workload"/>
+        
+        <receiver android:name="yu.lab.Receiver">
+            <intent-filter>
+                <!--<action android:name="android.intent.action.MAIN" />  -->
+        		<!--<action android:name="android.intent.action.BOOT_COMPLETED" />  -->
+        		<action android:name="android.intent.action.TEST_ACTION_notused" />
+        		<!--<category android:name="android.intent.category.DEFAULT" />  -->
+    		</intent-filter>
+        </receiver>
     </application>
 
 </manifest>

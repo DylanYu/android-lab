@@ -1,6 +1,6 @@
 package lab.broadcast;
 
-import lab.service.R;
+import yu.lab.R;
 
 import util.Util;
 import lab.service.ServiceActivity;

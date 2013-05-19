@@ -2,7 +2,7 @@ package lab.service;
 
 import java.util.Date;
 
-import lab.service.R;
+import yu.lab.R;
 
 import android.os.Bundle;
 import android.os.IBinder;
@@ -40,16 +40,16 @@ public class ServiceActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		mStartTime = new Date();
-		Log.i("LocalService", "Services started at " + mStartTime.getTime());
+		Log.i("LocalService", "Services started at " + mStartTime.getTime() / 1e3 % 1e6);
 //		doBindService();
-//		doStartNormalService();
-		doStartIntentService();
+//		doStartNormalService(30);
+		doStartIntentService(30);
 	}
 	
 	@Override
 	public void onPause() {
 		mEndTime = new Date();
-		Log.i("LocalService", (mEndTime.getTime() - mStartTime.getTime()) + "");
+		Log.i("LocalService", (mEndTime.getTime() / 1e3 % 1e6 - mStartTime.getTime() / 1e3 % 1e6) + "");
 		super.onPause();
 	}
 	
@@ -88,18 +88,11 @@ public class ServiceActivity extends Activity {
 	    }
 	};
 
-	void doStartIntentService() {
+	void doStartIntentService(int n) {
 		Intent intent = new Intent(ServiceActivity.this, AIntentService.class);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
+		for (int i = 0; i < n; i++) {
+			startService(intent);
+		}
 	}
 	
 	void doStopIntentService() {
@@ -107,18 +100,11 @@ public class ServiceActivity extends Activity {
 		stopService(intent);
 	}
 	
-	void doStartNormalService() {
+	void doStartNormalService(int n) {
 		Intent intent = new Intent(ServiceActivity.this, ANormalService.class);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
-		startService(intent);
+		for (int i = 0; i < n; i++) {
+			startService(intent);
+		}
 	}
 	
 	void doStopNormailService() {

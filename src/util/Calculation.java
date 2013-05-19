@@ -3,7 +3,7 @@ package util;
 import java.math.BigInteger;
 import java.util.Date;
 
-import lab.service.R;
+import yu.lab.R;
 
 import lab.lang.classes.FinalClass;
 import lab.lang.classes.LoopClass;
@@ -35,12 +35,21 @@ public class Calculation implements Runnable {
 	}
 
 	public static void labForService() {
-		Log.i("LocalService", "Calculation started");
+//		Log.i("LocalService", "Calculation started");
 		BigInteger count = new BigInteger("0");
 		for (int i = 0; i < Integer.MAX_VALUE / 5000; i++) {
 			count.add(new BigInteger(String.valueOf(i)));
 		}
-		Log.i("LocalService", "Calcultion finished at " + new Date().getTime());
+		Log.i("LocalService", "Calcultion finished at " + new Date().getTime() / 1e3 % 1e6);
+	}
+	
+	public static void labForService(int size) {
+//		Log.i("LocalService", "Calculation started");
+		BigInteger count = new BigInteger("0");
+		for (int i = 0; i < size; i++) {
+			count.add(new BigInteger(String.valueOf(i)));
+		}
+		Log.i("LocalService", "Calcultion finished at " + new Date().getTime() / 1e3 % 1e6);
 	}
 	
 	private void labForLang() {

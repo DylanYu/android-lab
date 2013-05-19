@@ -1,6 +1,4 @@
-package lab.service;
-
-import util.Calculation;
+package lab.center.center;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,25 +6,23 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-public class ANormalService extends Service {
+public class ThreadWork extends Service {
 
 	public class LocalBinder extends Binder {
-		ANormalService getService() {
-			return ANormalService.this;
+		ThreadWork getService() {
+			return ThreadWork.this;
 		}
 	}
 
 	@Override
 	public void onCreate() {
-		Log.i("LocalService", "NormalService onCreate");
+		Log.i("LocalService", "Channel NormalService onCreate");
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 //		Log.i("LocalService", "NormalService Received start id " + startId + ": " + intent);
-		new Thread(new Calculation("LAB_FOR_SERVICE")).start();
-		// We want this service to continue running until it is explicitly
-		// stopped, so return sticky.
+		new Thread(new Calculation(Integer.MAX_VALUE / 10000)).start();
 		return START_STICKY;
 	}
 

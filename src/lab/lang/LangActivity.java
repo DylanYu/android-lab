@@ -1,6 +1,6 @@
 package lab.lang;
 
-import lab.service.R;
+import yu.lab.R;
 
 import android.app.Activity;
 import android.content.Intent;
