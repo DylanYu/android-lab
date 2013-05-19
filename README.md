@@ -29,13 +29,19 @@ Here are some wisdom words from [Google's documentation](http://developer.androi
 	performance on any device. There are also huge differences between devices with and without a 
 	JIT: the best code for a device with a JIT is not always the best code for a device without.
 
-We made following conclusions after a series of experiments:
+We made following conclusions after series of experiments:
 
 1.	Use 'static final' for constants 1.6x faster than just 'static'.
 2.	Make the field public and access directly is 2x faster than using getters/setters.
 3.	Use enhanced for-loop(foreach) for a significant improvement to Collections who have implemented interface Itarable. Do not use it for Collections who have not implemented the interface.
 
+##Experiments to measure the efficiency of center mode
+
+We made following conclusions after series of experiments:
+
+1.  With single mode we can achieve a high computing power rate so we could accomplish the work faster. Single mode is a good choice when our work is time sensitive, but with a sacrifice of power.
+2.  When we have many tasks to handle, concurrent center mode is slower than single mode, and it consumes more power. Also this mode has no advantages to queued center mode. For power and time concerns we should abandon this mode.
+3.  When we have many tasks to handle, queued center mode consumes minimum power, but it’s the slowest among these three modes. We may choose this mode to save power when our work is not time sensitive.
+
 ##Experiments to trace the UI rendering process and scheduling policy for possible optimization
-TBA
-##Experiments to measure the efficiency of the facility of iOS notification center
 TBA
