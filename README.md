@@ -6,7 +6,7 @@ We made following conclusions after series of experiments:
 1.  Under concurrent environment, default service consumes more power than intent service.
 2.  Under concurrent environment, when dealing with a small amount of workload, default service requires less time to accomplish its job.
 3.  Under concurrent environment, when dealing with a large amount of workload, intent service requires less time to accomplish its job for the reason of less conflicts and competitions.
-4.  As the difference in used time is not significant between default and intent service, and services always run on background so running time is not concerned too much, developers should use intent service rather than default service.
+4.  As the difference in timing is not significant between default and intent service, and services always run on background so running time is not concerned too much, developers should use intent service rather than default service.
 
 ##Experiments to show the inappropriately programmed broadcast receivers
 
@@ -44,4 +44,8 @@ We made following conclusions after series of experiments:
 3.  When we have many tasks to handle, queued center mode consumes minimum power, but it’s the slowest among these three modes. We may choose this mode to save power when our work is not time sensitive.
 
 ##Experiments to trace the UI rendering process and scheduling policy for possible optimization
-TBA
+
+The Android UI rendering system is quite complex but worth of deep learning. We have 
+worked out some technical reports for internal use only. If you are interested in this field, 
+[Shengyang Luo's blog](http://blog.csdn.net/luoshengyang?viewmode=contents) is an awesome resource
+you must not miss. But anyway, you should always 'Read The Fucking Source Code'.
